@@ -1,13 +1,25 @@
-import mongoose, { connect } from "mongoose";
-import { DB_NAME } from "./constants";
-import express from 'express';
+// require('dotenv').config({path: './env'})
+// import mongoose, { connect } from "mongoose";
+// import { DB_NAME } from "./constants";
+// import express from 'express';
 
-const app = express();
+import dotenv from 'dotenv';
+import connectDB from "./db/indexdb.js";
+
+dotenv.config({
+    path: './env'
+})
+
+
+
+connectDB()
 
 
 // First approach ---- Everything in index
 /*
 // Using IIFE
+
+const app = express();
 (async () => {
     try{
         await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
